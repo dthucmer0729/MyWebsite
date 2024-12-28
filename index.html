@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+            color: #2c3e50;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #34495e;
+            color: white;
+            padding: 30px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h1, .sidebar h2, .sidebar h3 {
+            margin: 0;
+            color: #ecf0f1;
+            font-size: 1.8rem;
+        }
+
+        .sidebar p {
+            color: #bdc3c7;
+            font-size: 1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 14px;
+            background-color: #16a085;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sidebar button:hover {
+            background-color: #1abc9c;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar button:active {
+            background-color: #16a085;
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: #ecf0f1;
+            overflow-y: auto;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        #personal ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #personal ul li {
+            margin: 10px 0;
+        }
+
+        #personal a {
+            color: #16a085;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        #personal a:hover {
+            color: #1abc9c;
+        }
+
+        #personal .personal-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        #personal .text-info {
+            flex: 1;
+        }
+
+        #personal .image-info {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        #personal .personal-image {
+            width: 100%;
+            max-width: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        #labResults {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #labResults ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Grid with flexible columns */
+            gap: 15px;
+            padding: 0;
+            list-style: none;
+            width: 100%;
+            margin: 0;
+        }
+
+        #labResults button {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            min-width: 150px; /* Ensures button has a minimum width */
+        }
+
+        #labResults button:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        #labResults button:active {
+            background-color: #3498db;
+            transform: translateY(0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .lab-button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .lab-button-container button {
+            width: 180px;  /* Fixed width for better alignment */
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .lab-button-container button:hover {
+            background-color: #3498db;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .lab-button-container button:active {
+            background-color: #2980b9;
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .lab-button-container button i {
+            margin-right: 8px;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <h1>Welcome, this is my website</h1>
+                <p>Thank you for your time</p>
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><button onclick="showContent('personal')">Thông tin cá nhân</button></li>
+                    <li><button onclick="showContent('labResults')">Lab results</button></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div id="personal" class="content-section" style="display: none;">
+                <h3>Thông tin cá nhân</h3>
+                <div class="personal-info">
+                    <div class="text-info">
+                        <p><strong>Họ và tên:</strong> Phạm Hoàng Duy Thức</p>
+                        <p><strong>Lớp:</strong> DH23DTB</p>
+                        <p><strong>Trường:</strong> Đại học Nông Lâm TP.HCM</p>
+                        <p><strong>Email:</strong> <a href="mailto:dthuc2907@gmail.com">dthuc2907@gmail.com</a></p>
+                        <p><strong>Liên hệ:</strong></p>
+                        <ul>
+                            <li><a href="https://github.com/dthucmer0729" target="_blank">Github</a></li>
+                            <li><a href="https://www.facebook.com/Dreamer205" target="_blank">Facebook</a></li>
+                            <li><a href="https://www.instagram.com/_dt.dreamer_/" target="_blank">Instagram</a></li>
+                            <li><a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                    <div class="image-info">
+                        <img src="profile.jpg" alt="Personal Image" class="personal-image">
+                    </div>
+                </div>
+            </div>
+
+            <div id="labResults" class="content-section" style="display: none;">
+                <h3>Lab Results</h3>
+                <ul>
+                    <li><button onclick="openLab('Lab1.html')">Lab 1</button></li>
+                    <li><button onclick="openLab('Lab2.html')">Lab 2</button></li>
+                    <li><button onclick="openLab('Lab3.html')">Lab 3</button></li>
+                    <li><button onclick="openLab('Lab4.html')">Lab 4</button></li>
+                    <li><button onclick="openLab('Lab5.html')">Lab 5</button></li>
+                    <li><button onclick="openLab('Lab6.html')">Lab 6</button></li>
+                </ul>
+            </div>
+
+    <script>
+        function showContent(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
+        }
+
+        function openLab(labLink) {
+            window.open(labLink, '_blank');
+        }
+    </script>
+</body>
+</html>
